@@ -2,12 +2,12 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { Text, View, StyleSheet, Image } from "react-native";
 
 export default function Showtime() {
-    const router = useRouter();
-    const {id} = useLocalSearchParams();
+  const router = useRouter();
+  const { id } = useLocalSearchParams();
 
-return (
+  return (
     <>
-<Text>{id}Hello</Text>
+      <Text>{id}Hello</Text>
     </>
-)
+  );
 }
