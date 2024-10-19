@@ -1,11 +1,13 @@
 // app/index.ts
 import React from "react";
 import { useEffect, useState } from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image, Button } from "react-native";
 import getData from "@/helpers/getData";
+import { Link, useRouter } from "expo-router";
 
-export default function Index() {
+export default function Tab() {
   const [movies, setMovies] = React.useState([]);
+  const router = useRouter();
 
   const fetchData = async () => {
     const result: any = await getData("movie");
@@ -21,6 +23,7 @@ export default function Index() {
       {movies.length > 0 ? (
         movies.map((d: any) => (
           <View key={d.id}>
+            <Link href={`/movie/${d.id}`}>Click</Link>
             <Text>Movie {d.id}:</Text>
             <Text>{d.movie_name}</Text>
             <Image source={{ uri: d.movie_img }} style={styles.imgMovie} />
