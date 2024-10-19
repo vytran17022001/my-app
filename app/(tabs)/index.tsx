@@ -23,10 +23,10 @@ export default function Tab() {
       {movies.length > 0 ? (
         movies.map((d: any) => (
           <View key={d.id}>
-            <Link href={`/movie/${d.id}`}>Click</Link>
             <Text>Movie {d.id}:</Text>
             <Text>{d.movie_name}</Text>
             <Image source={{ uri: d.movie_img }} style={styles.imgMovie} />
+            <Link href={`/movie/${d.id}`}>Click</Link>
           </View>
         ))
       ) : (
