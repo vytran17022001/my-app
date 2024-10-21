@@ -1,13 +1,12 @@
 // app/index.ts
 import React from "react";
-import { useEffect, useState } from "react";
-import { Text, View, StyleSheet, Image, Button } from "react-native";
+import { useEffect } from "react";
+import { Text, View, StyleSheet, Image } from "react-native";
 import getData from "@/helpers/getData";
-import { Link, useRouter } from "expo-router";
+import { Link } from "expo-router";
 
 export default function Tab() {
   const [movies, setMovies] = React.useState([]);
-  const router = useRouter();
 
   const fetchData = async () => {
     const result: any = await getData("movie");

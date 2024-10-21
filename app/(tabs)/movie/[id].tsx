@@ -1,10 +1,9 @@
 import getData from "@/helpers/getData";
-import { Link, useLocalSearchParams, useRouter } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 import React from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, StyleSheet, Image } from "react-native";
 
 export default function Showtime() {
-  const router = useRouter();
   const { id } = useLocalSearchParams();
   const [movie, setMovie] = React.useState<any>({});
   const [showtimes, setShowtimes] = React.useState([]);
@@ -47,7 +46,14 @@ export default function Showtime() {
       <Text>{movie.category_name}</Text>
       {showtimes &&
         showtimes.map((st: any) => {
-          return <Text key={st.id}>{st.showtime_timedate.split(" ")[1]}</Text>;
+          const timeParts = st.showtime_timedate.split(" ");
+          const time = timeParts[1];
+          const AMandPM = timeParts[2];
+          return (
+            <Text key={st.id}>
+              {time} {AMandPM}
+            </Text>
+          );
         })}
     </>
   );
