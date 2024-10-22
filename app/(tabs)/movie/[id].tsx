@@ -1,7 +1,7 @@
 import getData from "@/helpers/getData";
-import { useLocalSearchParams } from "expo-router";
+import { Link, useLocalSearchParams } from "expo-router";
 import React from "react";
-import { Text, StyleSheet, Image } from "react-native";
+import { Text, StyleSheet, Image, View } from "react-native";
 
 export default function Showtime() {
   const { id } = useLocalSearchParams();
@@ -40,21 +40,28 @@ export default function Showtime() {
 
   return (
     <>
-      <Image source={{ uri: movie.movie_img }} style={styles.imgMovie} />
-      <Text>{movie.movie_name}</Text>
-      <Text>{movie.actor_name}</Text>
-      <Text>{movie.category_name}</Text>
-      {showtimes &&
-        showtimes.map((st: any) => {
-          const timeParts = st.showtime_timedate.split(" ");
-          const time = timeParts[1];
-          const AMandPM = timeParts[2];
-          return (
-            <Text key={st.id}>
-              {time} {AMandPM}
-            </Text>
-          );
-        })}
+      <View style={styles.container}>
+        <Image source={{ uri: movie.movie_img }} style={styles.imgMovie} />
+        <Text>{movie.movie_name}</Text>
+        <Text>{movie.actor_name}</Text>
+        <Text>{movie.category_name}</Text>
+        {showtimes &&
+          showtimes.map((st: any) => {
+            const timeParts = st.showtime_timedate.split(" ");
+            const time = timeParts[1];
+            const AMandPM = timeParts[2];
+            // return (
+            //   <Text key={st.id}>
+            //     {time} {AMandPM}
+            //   </Text>
+            // );
+            return (
+              <Link href={`/movie/order/${st.id}`} key={st.id}>
+                {time} {AMandPM}
+              </Link>
+            );
+          })}
+      </View>
     </>
   );
 }
@@ -64,5 +71,11 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     resizeMode: "contain",
+  },
+  container: {
+    // paddingTop: 50,
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

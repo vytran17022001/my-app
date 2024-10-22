@@ -15,12 +15,12 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="settings"
+        name="users"
         options={{
-          title: "Settings",
+          title: "User",
           headerShown: false,
           tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="cog" color={color} />
+            <FontAwesome size={28} name="user" color={color} />
           ),
         }}
       />
@@ -28,6 +28,17 @@ export default function TabLayout() {
         name="movie/[id]"
         options={{
           title: "Detail",
+          href: null,
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome size={28} name="cog" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="movie/order/[id]"
+        options={{
+          title: "Order",
           href: null,
           tabBarIcon: ({ color }) => (
             <FontAwesome size={28} name="cog" color={color} />

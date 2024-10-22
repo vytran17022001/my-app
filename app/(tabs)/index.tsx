@@ -2,8 +2,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { Text, View, StyleSheet, Image } from "react-native";
-import getData from "@/helpers/getData";
 import { Link } from "expo-router";
+import getData from "@/helpers/getData";
 
 export default function Tab() {
   const [movies, setMovies] = React.useState([]);
