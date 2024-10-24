@@ -8,12 +8,12 @@ import getData from "@/helpers/getData";
 export default function Tab() {
   const [movies, setMovies] = React.useState([]);
 
-  const fetchData = async () => {
-    const result: any = await getData("movie");
-    setMovies(result);
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      const result: any = await getData("movie");
+      setMovies(result);
+    };
+
     fetchData();
   }, []);
 

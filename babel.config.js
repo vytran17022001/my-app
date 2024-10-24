@@ -6,9 +6,10 @@ module.exports = function (api) {
       [
         "module-resolver",
         {
-          root: ["./src"], // Thay đổi './src' thành thư mục gốc của bạn nếu cần
+          root: ["./*"], // Thay đổi './src' thành thư mục gốc của bạn nếu cần
           alias: {
-            "@": "./src", // Thiết lập alias cho thư mục src
+            "@/": ["./*"], // Thiết lập alias cho thư mục src
+            "@": ["./*"],
           },
         },
       ],
